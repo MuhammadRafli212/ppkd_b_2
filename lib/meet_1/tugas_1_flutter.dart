@@ -4,9 +4,9 @@ class TugasSatu extends StatelessWidget {
   const TugasSatu({super.key});
   @override
   Widget build(BuildContext context) {
-    throw Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: Text('Profil', style: TextStyle(color: Colors.white)),
+        title: Text('Profil Saya', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
       ),
       body: Column(
