@@ -106,16 +106,16 @@ class Tugas2Flutter extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    height: 60,
+                    height: 50,
                     width: 400,
-                    decoration: BoxDecoration(color: Colors.amber),
+                    decoration: BoxDecoration(color: Colors.purple),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    height: 60,
+                    height: 50,
                     width: 400,
-                    decoration: BoxDecoration(color: Colors.greenAccent),
+                    decoration: BoxDecoration(color: Colors.teal),
                   ),
                 ),
               ],
