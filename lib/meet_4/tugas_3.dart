@@ -165,7 +165,13 @@ class _Tugas3State extends State<Tugas3> {
                   crossAxisCount: 3,
                   children: <Widget>[
                     Container(
-                      color: Colors.brown[800],
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGnbJchE6BHdCfaFSgcan9WOc9FfNrsMD9jg&s',
+                          ),
+                        ),
+                      ),
                       child: Stack(
                         children: [
                           Text(
@@ -176,7 +182,13 @@ class _Tugas3State extends State<Tugas3> {
                       ),
                     ),
                     Container(
-                      color: Colors.green[900],
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6GOQflQTRq5IUWsDKSAjZow5NPEstuwWoqw&s',
+                          ),
+                        ),
+                      ),
                       child: Stack(
                         children: [
                           Text(
@@ -187,7 +199,13 @@ class _Tugas3State extends State<Tugas3> {
                       ),
                     ),
                     Container(
-                      color: Colors.teal[900],
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZwMdGJo79X9wdbSutx8v06P2DlD2Mqdm78w&s',
+                          ),
+                        ),
+                      ),
                       child: Stack(
                         children: [
                           Text(
@@ -198,7 +216,13 @@ class _Tugas3State extends State<Tugas3> {
                       ),
                     ),
                     Container(
-                      color: Colors.teal[900],
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJbv_05Ecd4IelCGU-F2eKTw-qneM2H0qCRA&s',
+                          ),
+                        ),
+                      ),
                       child: Stack(
                         children: [
                           Text(
@@ -209,7 +233,13 @@ class _Tugas3State extends State<Tugas3> {
                       ),
                     ),
                     Container(
-                      color: Colors.teal[900],
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdBOd0oRzinT-7NrLate8LGlBce24yCqIUhQ&s',
+                          ),
+                        ),
+                      ),
                       child: Stack(
                         children: [
                           Text(
@@ -220,7 +250,13 @@ class _Tugas3State extends State<Tugas3> {
                       ),
                     ),
                     Container(
-                      color: Colors.cyan[900],
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_jYMuN1s-fDwuadG3TP_BvbIzoIFKDE6LvQ&s',
+                          ),
+                        ),
+                      ),
                       child: Stack(
                         children: [
                           Text(
