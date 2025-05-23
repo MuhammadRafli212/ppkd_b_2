@@ -151,7 +151,7 @@ class _Tugas3State extends State<Tugas3> {
               ),
             ),
             Text(
-              'Photos and Videos',
+              'Photos and Video',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 15),
