@@ -174,7 +174,7 @@ class _Tugas4State extends State<Tugas4> {
                   child: ListTile(
                     leading: Image.asset('assets/images/ket.jpg'),
                     shape: CircleBorder(),
-                    title: Text('Jaket Ellese'),
+                    title: Text('Jaket Tracktop Ellese'),
                     subtitle: Text('Rp1.500.000'),
                     trailing: Icon(Icons.shop),
                   ),
