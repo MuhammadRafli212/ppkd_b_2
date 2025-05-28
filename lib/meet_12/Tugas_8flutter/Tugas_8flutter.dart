@@ -48,7 +48,7 @@ class AboutPage extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'Aplikasi ini dibuat sebagai tugas Flutter yang menampilkan form input interaktif dengan Drawer, dan navigasi bawah menggunakan BottomNavigationBar.',
+            'Aplikasi ini dibuat sebagai tugas Flutter yang menampilkan form input interaktif dengan Drawer, dan Navigasi bawah menggunakan BottomNavigationBar.',
             style: TextStyle(fontSize: 16),
           ),
           SizedBox(height: 30),
