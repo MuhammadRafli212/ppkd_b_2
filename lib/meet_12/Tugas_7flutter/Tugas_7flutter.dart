@@ -77,7 +77,7 @@ class _Tugas7flutterState extends State<Tugas7flutter> {
             ListTile(
               leading: Icon(Icons.shopping_bag_outlined),
               title: Text(
-                'Pilih Kategori produk',
+                'Pilih Kategori Produk',
                 style: TextStyle(fontSize: 14),
               ),
               onTap: () {
