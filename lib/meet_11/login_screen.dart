@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
+import 'package:ppkd_b_2/helper/preference.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
+import 'package:ppkd_b_2/meet_12/meet_12b.dart';
 import 'package:ppkd_b_2/meet_4/meet_4a.dart';
-import 'package:ppkd_b_2/meet_5/meet_5.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -71,14 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
               height(24),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 56,
                 child: ElevatedButton(
                   onPressed: () {
                     // Navigate to MeetLima screen menggunakan Push
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MeetLima()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const MeetLima()),
+                    // );
+                    PreferenceHandler.saveLogin(true);
+                    Navigator.pushNamed(context, MeetDuaBelasB.id);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.blueButton,
@@ -124,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               height(16),
               SizedBox(
-                height: 30,
+                height: 48,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -137,9 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/images/icon_images.png",
-                        height: 14,
-                        width: 14,
+                        "assets/images/icon_google.png",
+                        height: 16,
+                        width: 16,
                       ),
                       width(4),
                       Text("Google"),

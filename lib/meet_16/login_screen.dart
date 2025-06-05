@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/helper/preference.dart';
 import 'package:ppkd_b_2/meet_12/Tugas_8flutter/Tugas_8flutter.dart';
+import 'package:ppkd_b_2/meet_16/register_screen.dart';
 
-void main() => runApp(const Tugas6());
-
-class Tugas6 extends StatelessWidget {
-  const Tugas6({super.key});
+class LoginScreenApp extends StatefulWidget {
+  const LoginScreenApp({super.key});
+  static const String id = '/login_screen_app';
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login UI',
-      theme: ThemeData(primarySwatch: Colors.deepPurple, fontFamily: 'Arial'),
-      home: const LoginPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<LoginScreenApp> createState() => _LoginScreenAppState();
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class _LoginScreenAppState extends State<LoginScreenApp> {
+  bool isVisible = false;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +39,7 @@ class LoginPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Selamat Datang',
+                      'Welcome Back',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -180,17 +175,16 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Don't have an account? "),
-                        GestureDetector(
-                          onTap: () {},
-                          child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "Register",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: Colors.indigo,
-                              ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, RegisterScreenApp.id);
+                          },
+                          child: const Text(
+                            "Register",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.indigo,
                             ),
                           ),
                         ),

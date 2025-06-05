@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_b_2/helper/preference.dart';
 import 'package:ppkd_b_2/meet_12/Tugas_7flutter/tugas_7a.dart';
 import 'package:ppkd_b_2/meet_12/Tugas_7flutter/tugas_7b.dart';
 import 'package:ppkd_b_2/meet_12/Tugas_7flutter/tugas_7c.dart';
 import 'package:ppkd_b_2/meet_12/Tugas_7flutter/tugas_7d.dart';
 import 'package:ppkd_b_2/meet_12/Tugas_7flutter/tugas_7e.dart';
+import 'package:ppkd_b_2/meet_6/Tugas_6.dart';
 
 class Tugas7flutter extends StatefulWidget {
   const Tugas7flutter({super.key});
@@ -108,6 +110,20 @@ class _Tugas7flutterState extends State<Tugas7flutter> {
                   _selectedIndex = 4;
                 });
                 Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app_sharp),
+              iconColor: Colors.redAccent,
+              title: Text('Log Out', style: TextStyle(fontSize: 14)),
+              onTap: () {
+                setState(() {
+                  PreferenceHandler.deleteLogin();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Tugas6()),
+                  );
+                });
               },
             ),
           ],
