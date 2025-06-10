@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/Tugas_11/barang_model.dart';
 import 'package:ppkd_b_2/Tugas_11/db_tugas.dart';
+import 'package:ppkd_b_2/Tugas_11/update_screen.dart';
 
 class Tugas11 extends StatefulWidget {
   const Tugas11({super.key});
@@ -10,24 +11,24 @@ class Tugas11 extends StatefulWidget {
 }
 
 class _TugasBerapaYaState extends State<Tugas11> {
-  final TextEditingController _namaController = TextEditingController();
-  final TextEditingController _jumlahController = TextEditingController();
-  final TextEditingController _jenisController = TextEditingController();
-  final TextEditingController _deskripsiController = TextEditingController();
+  final _namaController = TextEditingController();
+  final _jumlahController = TextEditingController();
+  final _jenisController = TextEditingController();
+  final _deskripsiController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  List<BarangModel> daftarbarang = [];
+  List<BarangModel> daftarBarang = [];
 
   @override
   void initState() {
-    muatData();
     super.initState();
+    muatData();
   }
 
   Future<void> muatData() async {
     final data = await DbTugas.getAllBarang();
     setState(() {
-      daftarbarang = data;
+      daftarBarang = data;
     });
   }
 
@@ -54,170 +55,161 @@ class _TugasBerapaYaState extends State<Tugas11> {
     }
   }
 
+  Future<void> hapusBarang(int id) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: const Text('Konfirmasi'),
+            content: const Text(
+              'Apakah Anda yakin ingin menghapus barang ini?',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Batal'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('Hapus', style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
+    );
+
+    if (confirm == true) {
+      await DbTugas.deleteBarang(
+        id,
+      ); // <- Memanggil fungsi delete yang sudah benar
+      muatData();
+    }
+  }
+
+  void pindahKeEdit(BarangModel barang) async {
+    final hasil = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => EditBarangPage(barang: barang)),
+    );
+    if (hasil == true) {
+      muatData();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Pendataan Inventaris Barang',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Color(0xff90D1CA),
+        title: const Text('Pendataan Inventaris Barang'),
+        backgroundColor: const Color(0xff90D1CA),
       ),
-      backgroundColor: Color(0xffB6C7AA),
+      backgroundColor: const Color(0xffB6C7AA),
       body: Padding(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Form Pendataan',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
             Form(
               key: _formKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextFormField(
-                    validator:
-                        (value) =>
-                            (value == null || value.isEmpty)
-                                ? 'Wajib harus diisi'
-                                : null,
                     controller: _namaController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Nama Barang',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                      border: OutlineInputBorder(),
                     ),
+                    validator: (value) => value!.isEmpty ? 'Wajib diisi' : null,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   TextFormField(
-                    validator:
-                        (value) =>
-                            (value == null || value.isEmpty)
-                                ? 'Wajib harus diisi'
-                                : null,
                     controller: _jumlahController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Jumlah',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                      border: OutlineInputBorder(),
                     ),
+                    validator: (value) => value!.isEmpty ? 'Wajib diisi' : null,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   TextFormField(
-                    validator:
-                        (value) =>
-                            (value == null || value.isEmpty)
-                                ? 'Wajib harus diisi'
-                                : null,
                     controller: _jenisController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Jenis Barang',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                      border: OutlineInputBorder(),
                     ),
+                    validator: (value) => value!.isEmpty ? 'Wajib diisi' : null,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   TextFormField(
-                    validator:
-                        (value) =>
-                            (value == null || value.isEmpty)
-                                ? 'Wajib harus diisi'
-                                : null,
                     controller: _deskripsiController,
-                    decoration: InputDecoration(
-                      labelText: 'Deskripsi ',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                    decoration: const InputDecoration(
+                      labelText: 'Deskripsi',
+                      border: OutlineInputBorder(),
                     ),
+                    validator: (value) => value!.isEmpty ? 'Wajib diisi' : null,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         simpanData();
                       }
                     },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 45),
-                      backgroundColor: Color(0xff129990),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    ),
-                    child: Text('Simpan'),
+                    child: const Text('Simpan'),
                   ),
-                  Divider(height: 38),
+                  const Divider(height: 30),
                 ],
               ),
             ),
-            Text(
+            const Text(
               'Daftar Barang',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Expanded(
               child: ListView.builder(
-                //physics: NeverScrollableScrollPhysics(),
-                itemCount: daftarbarang.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final barang = daftarbarang[index];
+                itemCount: daftarBarang.length,
+                itemBuilder: (context, index) {
+                  final barang = daftarBarang[index];
                   return Card(
                     child: ListTile(
+                      leading: CircleAvatar(child: Text('${barang.id}')),
+                      title: Text(barang.nama),
+                      subtitle: Text('Jumlah: ${barang.jumlah}'),
                       onTap: () {
                         showDialog(
                           context: context,
                           builder:
-                              (context) => AlertDialog(
-                                title: Text('Details'),
+                              (_) => AlertDialog(
+                                title: const Text('Detail Barang'),
                                 content: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Nama: ${barang.nama}'),
                                     Text('Jumlah: ${barang.jumlah}'),
-                                    Text(
-                                      'Jenis Barang: ${barang.jenis_barang}',
-                                    ),
+                                    Text('Jenis: ${barang.jenis_barang}'),
                                     Text('Deskripsi: ${barang.deskripsi}'),
                                   ],
                                 ),
                                 actions: [
                                   TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text('Tutup'),
+                                    onPressed: () => Navigator.pop(context),
+                                    child: const Text('Tutup'),
                                   ),
                                 ],
                               ),
                         );
                       },
-                      leading: CircleAvatar(child: Text('${barang.id}')),
-                      title: Text(
-                        barang.nama,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text('Jumlah: ${barang.jumlah}')],
-                      ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
-                        onPressed: () async {
-                          await DbTugas.deleteBarang(
-                            barang.id!,
-                          ); // pastikan id tidak null
-                          muatData(); // refresh daftar
-                        },
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.edit, color: Colors.orange),
+                            onPressed: () => pindahKeEdit(barang),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () => hapusBarang(barang.id!),
+                          ),
+                        ],
                       ),
                     ),
                   );

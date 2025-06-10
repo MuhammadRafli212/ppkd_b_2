@@ -45,4 +45,14 @@ class DbTugas {
       await db.execute("DELETE FROM sqlite_sequence WHERE name ='barang'");
     }
   }
+
+  static Future<void> updateBarang(BarangModel barang) async {
+    final db = await DbTugas.initDB();
+    await db.update(
+      'barang_baru',
+      barang.toMap(),
+      where: 'id = ?',
+      whereArgs: [barang.id],
+    );
+  }
 }
