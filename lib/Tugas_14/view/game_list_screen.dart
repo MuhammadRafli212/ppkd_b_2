@@ -133,7 +133,7 @@ class _GameListScreenState extends State<GameListScreen> {
               ),
             ),
           ),
-
+          SizedBox(height: 5),
           // Family filter
           if (_allGames.isNotEmpty)
             SizedBox(
@@ -168,7 +168,7 @@ class _GameListScreenState extends State<GameListScreen> {
 
           // Search bar + refresh button
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
               children: [
                 Expanded(
