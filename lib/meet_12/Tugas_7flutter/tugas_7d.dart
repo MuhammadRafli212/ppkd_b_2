@@ -35,7 +35,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ElevatedButton(
-          child: const Text('Pilih Tanggal Lahir'),
+          child: const Text('Pilih Tanggal Latihan'),
           onPressed: () async {
             final picked = await showDatePicker(
               context: context,

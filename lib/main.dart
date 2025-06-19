@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_2/Tugas_11/Tugas_11.dart';
-import 'package:ppkd_b_2/meet_12/Tugas_7flutter/Tugas_7flutter.dart';
-import 'package:ppkd_b_2/meet_12/Tugas_8flutter/Tugas_8flutter.dart';
 import 'package:ppkd_b_2/meet_16/login_screen.dart';
 import 'package:ppkd_b_2/meet_16/register_screen.dart';
-import 'package:ppkd_b_2/meet_6/Tugas_6.dart';
+import 'package:ppkd_b_2/tugas_13/beranda.dart';
+import 'package:ppkd_b_2/tugas_13/hal_login.dart';
+import 'package:ppkd_b_2/tugas_13/hal_register.dart';
+import 'package:ppkd_b_2/tugas_13/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       // home: LoginScreenApp(),
       routes: {
-        '/': (context) => Tugas11(),
-        "/login": (context) => Tugas6(),
-        "/Homescreen": (context) => Tugas8flutter(),
-        "/Tujuh": (context) => Tugas7flutter(),
-        LoginScreenApp.id: (context) => LoginScreenApp(),
-        RegisterScreenApp.id: (context) => RegisterScreenApp(),
+        '/': (context) => Splash(),
+        "/login": (context) => HalLogin(),
+        "/Homescreen": (context) => Beranda(),
+        //"/Tujuh": (context) => Tugas7flutter(),
+        LoginScreenApp.id: (context) => HalLogin(),
+        RegisterScreenApp.id: (context) => HalRegister(),
       },
       title: "PPKD B 2",
 
